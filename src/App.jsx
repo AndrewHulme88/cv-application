@@ -1,35 +1,67 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Info from './components/info.jsx'
+import Education from './components/education.jsx'
+import Experience from './components/experience.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [generalInfo, setGeneralInfo] = useState({});
+  const [educationInfo, setEducationInfo] = useState({});
+  const [experienceInfo, setExperienceInfo] = useState({});
+
+  const handleGeneralInfoSubmit = (data) => {
+    setGeneralInfo(data);
+  };
+
+  const handleEducationInfoSubmit = (data) => {
+    setEducationInfo(data);
+  };
+
+  const handleExperienceInfoSubmit = (data) => {
+    setExperienceInfo(data);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      <h1>CV Builder</h1>
+
+      <h2>General Information</h2>
+      {Object.keys(generalInfo).length === 0 ? (
+        <Info onSubmit={handleGeneralInfoSubmit} initialValues={generalInfo} />
+      ) : (
+        <>
+          <p>Name: {generalInfo.name}</p>
+          <p>Email: {generalInfo.email}</p>
+          <p>Phone: {generalInfo.phone}</p>
+        </>
+      )}
+
+      <h2>Education</h2>
+      {Object.keys(educationInfo).length === 0 ? (
+        <Education onSubmit={handleEducationInfoSubmit} initialValues={educationInfo} />
+      ) : (
+        <>
+          <p>School: {educationInfo.school}</p>
+          <p>Title of Study: {educationInfo.titleOfStudy}</p>
+          <p>Date of Study: {educationInfo.dateOfStudy}</p>
+        </>
+      )}
+
+      <h2>Experience</h2>
+      {Object.keys(experienceInfo).length === 0 ? (
+        <Experience onSubmit={handleExperienceInfoSubmit} initialValues={experienceInfo} />
+      ) : (
+        <>
+          <p>Company: {experienceInfo.company}</p>
+          <p>Position: {experienceInfo.position}</p>
+          <p>Main Responsibilities: {experienceInfo.responsibilities}</p>
+          <p>Date From: {experienceInfo.dateFrom}</p>
+          <p>Date To: {experienceInfo.dateTo}</p>
+        </>
+      )}
+
+    </div>
+  );
 }
 
 export default App
