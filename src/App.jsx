@@ -3,6 +3,7 @@ import './App.css'
 import Info from './components/info.jsx'
 import Education from './components/education.jsx'
 import Experience from './components/experience.jsx'
+import EditButton from './components/edit-button.jsx'
 
 function App() {
   const [generalInfo, setGeneralInfo] = useState({});
@@ -33,6 +34,7 @@ function App() {
           <p>Name: {generalInfo.name}</p>
           <p>Email: {generalInfo.email}</p>
           <p>Phone: {generalInfo.phone}</p>
+          <EditButton onClick={() => setGeneralInfo({})} />
         </>
       )}
 
@@ -44,6 +46,7 @@ function App() {
           <p>School: {educationInfo.school}</p>
           <p>Title of Study: {educationInfo.titleOfStudy}</p>
           <p>Date of Study: {educationInfo.dateOfStudy}</p>
+          <EditButton onClick={() => setEducationInfo({})} />
         </>
       )}
 
@@ -57,6 +60,7 @@ function App() {
           <p>Main Responsibilities: {experienceInfo.responsibilities}</p>
           <p>Date From: {experienceInfo.dateFrom}</p>
           <p>Date To: {experienceInfo.dateTo}</p>
+          <EditButton onClick={() => setExperienceInfo({})} />
         </>
       )}
 

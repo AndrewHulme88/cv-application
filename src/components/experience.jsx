@@ -19,6 +19,7 @@ const Experience = ({onSubmit, initialValues}) => {
       <textarea value={responsibilities} onChange={(e) => setResponsibilities(e.target.value)} placeholder='Main Reasponsibilities'></textarea>
       <input type="text" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} placeholder='Date From' />
       <input type="text" value={dateTo} onChange={(e) => setDateTo(e.target.value)} placeholder='Date To' />
+      <button type="submit">Submit</button>
     </form>
   );
 };
